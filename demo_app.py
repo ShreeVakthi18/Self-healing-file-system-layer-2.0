@@ -110,18 +110,18 @@ st.info(
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-    if st.button("🎯 Tamper decoy file", width='stretch'):
+    if st.button("🎯 Tamper decoy file", use_container_width=True):
         act("Decoy tampered — watch for automatic rollback",
             lambda: open(os.path.join(sandbox, "CEO_Contract.docx"), "a").write("\nTAMPERED"))
 
 with col2:
-    if st.button("🗑️ Delete sensitive file", width='stretch'):
+    if st.button("🗑️ Delete sensitive file", use_container_width=True):
         act("Sensitive file deleted — no auto-rollback, alert raised",
             lambda: os.remove(os.path.join(sandbox, "Legal_Settlement_Docs.docx"))
             if os.path.exists(os.path.join(sandbox, "Legal_Settlement_Docs.docx")) else None)
 
 with col3:
-    if st.button("🦠 Simulate ransomware rename", width='stretch'):
+    if st.button("🦠 Simulate ransomware rename", use_container_width=True):
         def _ransom():
             src = os.path.join(sandbox, "meeting_notes.txt")
             if os.path.exists(src):
@@ -129,7 +129,7 @@ with col3:
         act("Ransomware-style rename triggered — watch for automatic rollback", _ransom)
 
 with col4:
-    if st.button("🔄 Reset demo", width='stretch'):
+    if st.button("🔄 Reset demo", use_container_width=True):
         watcher = st.session_state.get("watcher")
         if watcher:
             watcher.stop()
@@ -151,7 +151,7 @@ for filename, details in log_data.items():
         "Risk Outcome": details.get("risk_outcome", "NONE"),
         "Risk Score": details.get("risk_score", 0),
     })
-st.dataframe(rows, width='stretch', hide_index=True)
+st.dataframe(rows, use_container_width=True, hide_index=True)
 
 st.subheader("Activity log")
 try:
