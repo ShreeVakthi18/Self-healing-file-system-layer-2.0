@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: shfsl2-demo
+    env: python
+    plan: free
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run demo_app.py --server.port $PORT --server.address 0.0.0.0 --server.headless true
+    envVars:
+      - key: SHFSL_DEMO_MODE
+        value: "true"
+      - key: SHFSL_DEBUG
+        value: "false"
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+    healthCheckPath: /

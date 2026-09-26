@@ -1,0 +1,21 @@
+.env
+*.env
+!.env.example
+
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Runtime-generated, never commit
+snapshot_storage/
+watcher_log.json
+watcher_log.json.tmp*
+activity_dashboard.log
+activity_dashboard.log.tmp*
+*.corrupted_*
+
+# Local sandbox/demo artifacts
+.venv/
+venv/
+*.egg-info/
+.DS_Store
