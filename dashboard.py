@@ -71,7 +71,7 @@ rows = [
     }
     for fn, d in log_data.items()
 ]
-st.dataframe(rows, width='stretch', hide_index=True)
+st.dataframe(rows, use_container_width=True, hide_index=True)
 
 st.subheader("Activity log")
 try:
